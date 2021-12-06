@@ -7,69 +7,52 @@ public class hangman {
 
     public static void main (String[] args) {
 
-        char letter;
-        int letters;
         int num = 1;
 
         System.out.print("HANGMAN \n" + "The game will be available soon\n");
-        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
         Scanner in = new Scanner(System.in);
-
+        Scanner scanner = new Scanner(System.in);
         List<String> words = new ArrayList<>();
         words.add("python");
         words.add("java");
         words.add("javascript");
         words.add("kotlin");
-        int randomIndex = ThreadLocalRandom.current().nextInt(words.size());
-        String hiddenword = words.get(randomIndex);
-        letters = hiddenword.length();
-        for (int i = 0; i < letters; i++){
-            System.out.print("-");
+        String hiddenword = words.get(random.nextInt(words.size()));
+        Set<String> word = new HashSet<>();
+        List<String> letters = new ArrayList<>();
+        for (int i = 0; i < hiddenword.length(); i++){
+            word.add(String.valueOf(hiddenword.charAt(i)));
         }
-        char[] word = new char[letters];
-        char[] attempts = new char[20];
-        int cycle = 0;
-        int attempt = 0;
-        int attempt_letter = 0;
-        for (int i = 0; i < 8; i++) {
-            System.out.println("\nEnter letter:");
-            letter = in.next().charAt(0);
-            for (int o = 0; o < letters; o++) {
-                if (letter == hiddenword.charAt(o)) {
-                    word[o] = letter;
-                    attempt_letter = 1;
-                }
+        String replaceword;
+        System.out.println(hiddenword.replaceAll("[a-zA-Z]","-"));
+        for(int i = 8; i >= 1;){
+            System.out.print("Input a letter:> ");
+            String letter = scanner.nextLine();
+            if(letters.contains(letter)){
+                System.out.println("You've already guessed this letter.");
             }
-            System.out.println(word);
-            for (int l = 0; l < 20; l++) {
-                if (letter == attempts[l]) {
-                    attempt++;
-                }
+            if(letter.length() > 1){
+                System.out.println("You should input a single letter.");
             }
-            if (attempt > 0) {
-                System.out.println("No improvements");
+            if(word.contains(letter) && !letters.contains(letter)){
+                letters.add(letter);
+                replaceword = hiddenword.replaceAll("[^"+letters+"]","-");
+                System.out.println(replaceword);}
+            if (letter.matches("[A-Z]")){
+                System.out.println("Please enter a lowercase English letter.");
             }
-            else if (attempt_letter == 1){
+            if (!word.contains(letter) && letter.length() < 2){
+                System.out.println("That letter doesn't appear in the word");
                 i--;
             }
-            else {
-                System.out.println("That letter doesn't appear in the word");
-            }
-            for (int p = 0; p < letters; p++) {
-                if (word[p] == hiddenword.charAt(p)) {
-                    num++;
-                }
-            }
-            if (num == letters) {
+            if (letters.size() == word.size()) {
                 System.out.println("You survived!");
-            } else {
-                num = 0;
+                break;
             }
-            attempts[cycle] = letter;
-            cycle++;
-            attempt = 0;
-            attempt_letter = 0;
+            if (i == 0){
+                System.out.println("You lost!");
+            }
         }
-        System.out.println("You lost!");
     }
 }
