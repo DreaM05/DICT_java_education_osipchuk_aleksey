@@ -1,23 +1,35 @@
 package Hangman;
 
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class hangman {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        for(int m = 1; m > m - 1; m++){
+            System.out.print("""
+                    HANGMAN\s
+                    Type "play" to play the game, "exit" to quit:>\s
+                    """);
+            String answer = scanner.nextLine();
+            if(Objects.equals(answer,"play")){
+                game();
+            }else {
+                break;
+            }
+        }
+    }
 
-    public static void main (String[] args) {
-
-        int num = 1;
-
-        System.out.print("HANGMAN \n" + "The game will be available soon\n");
+    static void game() {
         Random random = new Random();
-        Scanner in = new Scanner(System.in);
         Scanner scanner = new Scanner(System.in);
         List<String> words = new ArrayList<>();
-        words.add("python");
-        words.add("java");
-        words.add("javascript");
-        words.add("kotlin");
+        words.add("mercedes");
+        words.add("audi");
+        words.add("bmw");
+        words.add("volkswagen");
+        words.add("ford");
+        words.add("toyota");
+        words.add("mazda");
         String hiddenword = words.get(random.nextInt(words.size()));
         Set<String> word = new HashSet<>();
         List<String> letters = new ArrayList<>();
@@ -55,4 +67,5 @@ public class hangman {
             }
         }
     }
+
 }
