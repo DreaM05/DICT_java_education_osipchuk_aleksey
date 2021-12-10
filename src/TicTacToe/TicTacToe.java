@@ -1,18 +1,25 @@
 package TicTacToe;
 
+import java.util.Scanner;
+
 public class TicTacToe {
 
-    public static void main(String[] args) {
+    public static final String PUSTAYA = " _ ", KRESTIK = " X ", NOLIK = " O ";
+    public static String aktivnyiIgrok;
 
-        String[][] strings = {{"X ", "0 ", "X"},
-                            {"O ", "X ", "O"},
-                            {"X ", "X ", "O"}};
-        for (String [] ss : strings) {
-            for (String s : ss)
-                System.out.print(s + "");
-                System.out.println();
-        }
+    public static final int RYADKOV = 3, STOLBIKOV = 3;
+    public static String[][] setka = new String[RYADKOV][STOLBIKOV];
+    public static int statusIgry;
+    public static final int STATUS_IGRA_PRODOLJAETSYA = 0, STATUS_NICHIYA = 1, STATUS_POBEDA_X = 2, STATUS_POBEDA_O = 3;
+    public static Scanner in = new Scanner(System.in);
 
-    }
+    public static void main(String[] args) {    }
+
+    public static void NachaloIgry(){}
+    public static void VvodIgroka(){}
+    public static void AnalizSetki(){}
+    public static boolean ProverkaZapolneniyaKletochek(){}
+    public static String ProverkaPobeditelya(){}
+    public static void VyvodSetki(){}
 
 }
