@@ -14,12 +14,25 @@ public class TicTacToe {
     public static Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {    }
-
-    public static void NachaloIgry(){}
+    public static void NachaloIgry(){    }
     public static void VvodIgroka(){}
     public static void AnalizSetki(){}
     public static boolean ProverkaZapolneniyaKletochek(){}
     public static String ProverkaPobeditelya(){}
-    public static void VyvodSetki(){}
+    public static void VyvodSetki(){
+        for (int ryad = 0; ryad < RYADKOV; ryad++) {
+            for (int stolb = 0; stolb < STOLBIKOV; stolb++) {
+                System.out.print(setka[ryad][stolb]);
+                if (stolb != STOLBIKOV) {
+                    System.out.print("|");
+                }
+            }
+            System.out.println();
+            if (ryad != RYADKOV - 1) {
+                System.out.println("-----------");
+            }
+        }
+        System.out.println();
+    }
 
 }
