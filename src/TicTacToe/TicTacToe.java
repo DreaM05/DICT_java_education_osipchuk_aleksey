@@ -1,8 +1,12 @@
 package TicTacToe;
+
 import java.util.Scanner;
+
 public class TicTacToe {
+
     public static final String PUSTAYA = " _ ", KRESTIK = " X ", NOLIK = " O ";
     public static String aktivnyiIgrok;
+
     public static final int RYADKOV = 3, STOLBIKOV = 3;
     public static String[][] setka = new String[RYADKOV][STOLBIKOV];
     public static int statusIgry;
@@ -128,4 +132,5 @@ public class TicTacToe {
         }
         System.out.println();
     }
+
 }
